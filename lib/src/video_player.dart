@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
 import 'package:http/http.dart' as http;
-import 'package:video_player_web_hls/hls.dart';
-import 'package:video_player_web_hls/no_script_tag_exception.dart';
-import 'package:video_player_web_hls/src/pkg_web_tweaks.dart';
+import 'package:video_player_web/hls.dart';
+import 'package:video_player_web/no_script_tag_exception.dart';
+import 'package:video_player_web/src/pkg_web_tweaks.dart';
 import 'package:web/web.dart' as web;
 
 import 'duration_utils.dart';
@@ -126,7 +126,7 @@ class VideoPlayer {
               }
             }.toJS);
         _eventsSubscriptions.add(_videoElement.onCanPlay.listen((dynamic _) {
-          _onVideoElementInitialization(_) ;
+          _onVideoElementInitialization(_);
           setBuffering(false);
         }));
       } catch (e) {

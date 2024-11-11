@@ -8,17 +8,16 @@ import 'dart:ui_web' as ui_web;
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:video_player_platform_interface/video_player_platform_interface.dart';
+import 'package:video_player_web/src/video_player.dart';
 import 'package:web/web.dart' as web;
-
-import 'src/video_player.dart';
 
 /// The web implementation of [VideoPlayerPlatform].
 ///
 /// This class implements the `package:video_player` functionality for the web.
-class VideoPlayerPluginHls extends VideoPlayerPlatform {
+class VideoPlayerPlugin extends VideoPlayerPlatform {
   /// Registers this class as the default instance of [VideoPlayerPlatform].
   static void registerWith(Registrar registrar) {
-    VideoPlayerPlatform.instance = VideoPlayerPluginHls();
+    VideoPlayerPlatform.instance = VideoPlayerPlugin();
   }
 
   // Map of textureId -> VideoPlayer instances
@@ -70,9 +69,11 @@ class VideoPlayerPluginHls extends VideoPlayerPlatform {
         uri = assetUrl;
         break;
       case DataSourceType.file:
-        return Future<int>.error(UnimplementedError('web implementation of video_player cannot play local files'));
+        return Future<int>.error(UnimplementedError(
+            'web implementation of video_player cannot play local files'));
       case DataSourceType.contentUri:
-        return Future<int>.error(UnimplementedError('web implementation of video_player cannot play content uri'));
+        return Future<int>.error(UnimplementedError(
+            'web implementation of video_player cannot play content uri'));
     }
 
     final web.HTMLVideoElement videoElement = web.HTMLVideoElement()

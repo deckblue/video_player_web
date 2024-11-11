@@ -17,9 +17,10 @@ class _VideoAppState extends State<VideoApp> {
   void initState() {
     super.initState();
     try {
-      _controller = VideoPlayerController.network(
-          'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8')
-        ..initialize().then((_) {
+      _controller = VideoPlayerController.networkUrl(
+        Uri.parse(
+            'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8'),
+      )..initialize().then((_) {
           // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
           setState(() {});
         });
